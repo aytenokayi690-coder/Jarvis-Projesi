@@ -1,0 +1,18 @@
+name: APK Yapici
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Buildozer Action
+        uses: ArtemSerebriakov/buildozer-action@v1
+        with:
+          command: android debug
+          repository_display_name: Jarvis
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: Jarvis-APK
+          path: bin/*.apk
+          
